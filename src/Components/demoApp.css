@@ -1,0 +1,44 @@
+*{
+    padding:0;
+    margin:0
+}
+ul{
+    list-style: none;
+}
+.demoapp{
+    padding:20px;
+    font-size: 14px;
+}
+.selectBlock{
+    padding:10px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+.selectBlock ul,.likedblock ul{
+    overflow: hidden;
+}
+.selectBlock li,.likedblock li{
+    position: relative;
+    float: left;
+    width: 90px;
+    margin: 4px;
+    border:1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 2;
+}
+.selectBlock li span{
+    display: block;
+    height: 100%;
+    width: 100%
+}
+.disable{
+    background-color: #eee;
+    color: #999
+}
+.deleIcon{
+    position: absolute;
+    top: 0;
+    right:6px;
+}
