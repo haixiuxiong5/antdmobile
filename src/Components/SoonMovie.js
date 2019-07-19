@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {withRouter } from 'react-router-dom'
+
 import {ListView,Card,Toast} from 'antd-mobile'
 import axios from 'axios'
 
@@ -23,6 +25,14 @@ class SoonMovie extends Component {
             height: document.documentElement.clientHeight-120,
             start:0
         }
+    }
+    goDetail(id){
+        this.props.history.push({
+            pathname:`/Detail/${id}`,
+            state:{
+                id:id
+            }
+        })
     }
     componentDidMount(){
         this.getData(true);
@@ -103,7 +113,7 @@ class SoonMovie extends Component {
             }
             const obj = this.state.movieData[index--];
             return (
-                <Card full key={rowID}>
+                <Card full key={rowID} onClick={this.goDetail.bind(this,obj.id)}>
                     <Card.Body>
                         <div style={{display:'flex'}}>
                             <img src={obj.images.small} style={{width:'60px',height:'60px',objectFit:'cover',marginRight:'15px'}} alt=""/>
@@ -137,4 +147,4 @@ class SoonMovie extends Component {
     }
 }
  
-export default SoonMovie;
+export default withRouter(SoonMovie);

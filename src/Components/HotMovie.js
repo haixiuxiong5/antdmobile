@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter } from 'react-router-dom'
 import {ListView,Card,Toast} from 'antd-mobile'
 import axios from 'axios'
 
@@ -7,7 +8,7 @@ import axios from 'axios'
 class HotMovie extends Component {
     constructor(props) {
         super(props);
-        
+        console.log(props)
         const dataSource = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
@@ -23,12 +24,12 @@ class HotMovie extends Component {
         }
     }
     goDetail(id){
-        // this.props.history.push({
-        //     pathname:`/Detail/${id}`,
-        //     state:{
-        //         id:id
-        //     }
-        // })
+        this.props.history.push({
+            pathname:`/Detail/${id}`,
+            state:{
+                id:id
+            }
+        })
         console.log(id)
     }
     componentDidMount(){
@@ -36,7 +37,6 @@ class HotMovie extends Component {
     }
     getData(ref=false){
         const that=this;
-        // console.log(that.state.start)
         axios.get(`/api/movie/in_theaters?start=${that.state.start}&count=10`).then((res)=>{
             const length=res.data.subjects.length;
             if(length===0){
@@ -129,7 +129,6 @@ class HotMovie extends Component {
                     </div>)}
                     renderRow={renderrow}
                     renderSeparator={separator}
-                    // renderBodyComponent={() => <MyBody />}
                     style={{
                         height: this.state.height,
                         overflow: 'auto',
@@ -144,4 +143,4 @@ class HotMovie extends Component {
     }
 }
  
-export default HotMovie;
+export default withRouter(HotMovie);

@@ -34,7 +34,9 @@ class Movie extends Component {
                 <WingBlank>
                     <WhiteSpace size="lg" />
                     <SegmentedControl values={['最近热映', '即将上映', 'top250']} selectedIndex={this.state.selectIndex} onChange={this.onChange}/>
-                    {this.renderbody()}
+                    <div style={{marginTop:'10px'}}>
+                        {this.renderbody()}
+                    </div>
                 </WingBlank>
             </div>
         );

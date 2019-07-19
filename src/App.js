@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import {TabBar} from 'antd-mobile'
+
 import Movie from './Components/Movie'
 import Music from './Components/Music'
 import Books from './Components/Books'
+import movieIcon from './images/movie.svg'
+import musicIcon from './images/music.svg'
+import bookIcon from './images/book.svg'
+import movieIconS from './images/movie_S.svg'
+import musicIconS from './images/music_S.svg'
+import bookIconS from './images/book_S.svg'
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab:'movieTab',
-      fullScreen:true
+      fullScreen:true,
+      pathname:'/movie'
     }
-  }
-  renderContent(pageText){
-    return (
-      <div>A</div>
-    )
   }
   render() { 
     return (
       <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
         <TabBar
           unselectedTintColor="#949494"
-          tintColor="#33A3F4"
+          tintColor="#009a61"
           barTintColor="white"
         >
           <TabBar.Item
@@ -30,21 +32,20 @@ class App extends Component {
             icon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+              background: `url(${movieIcon}) center center /  21px 21px no-repeat` }}
             />
             }
             selectedIcon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+              background: `url(${movieIconS}) center center /  21px 21px no-repeat` }}
             />
             }
-            selected={this.state.selectedTab === 'movieTab'}
-            badge={1}
+            selected={this.state.pathname==='/movie'}
             onPress={() => {
               this.setState({
-                selectedTab: 'movieTab',
-              });
+                pathname:'/movie'
+              })
             }}
           >
             <Movie></Movie>
@@ -54,37 +55,37 @@ class App extends Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+                background: `url(${musicIcon}) center center /  21px 21px no-repeat` }}
               />
             }
             selectedIcon={
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                background: `url(${musicIconS}) center center /  21px 21px no-repeat` }}
               />
             }
             title="音乐"
             key="music"
-            selected={this.state.selectedTab === 'musicTab'}
-            onPress={() => {
+            selected={this.state.pathname==='/music'}
+            onPress={()=>{
               this.setState({
-                selectedTab: 'musicTab',
-              });
+                pathname:'/music'
+              })
             }}
           >
             <Music></Music>
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+            icon={{ uri: `${bookIcon}` }}
+            selectedIcon={{ uri: `${bookIconS}` }}
             title="图书"
             key="books"
-            selected={this.state.selectedTab === 'booksTab'}
-            onPress={() => {
+            selected={this.state.pathname==='/books'}
+            onPress={()=>{
               this.setState({
-                selectedTab: 'booksTab',
-              });
+                pathname:'/books'
+              })
             }}
           >
             <Books></Books>

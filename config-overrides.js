@@ -4,4 +4,8 @@ module.exports = override(
         libraryName:'antd-mobile',
         style:'css',
     }),
+    // addWebpackAlias({
+    //     ["@"]:path.resolve(__dirname,"./src"),
+    //     ["@components"]: path.resolve(__dirname, "./src/components")
+    // })
 )
